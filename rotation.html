@@ -63,7 +63,7 @@
             let parsed = JSON.parse(event.data);
 
             [cube.rotation.x, cube.rotation.y, cube.rotation.z] = parsed.measuredGyro.map((angle) => {
-                return angle * 180/Math.PI;
+                return angle * Math.PI/180;
             });
 
         }
