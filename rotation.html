@@ -73,10 +73,9 @@
 
         gauntlet.onmessage = (event) => {
             let parsed = JSON.parse(event.data);
-
-            [cube.rotation.x, cube.rotation.y] = parsed.filteredAngles.map((angle) => {
-                return angle * Math.PI/180;
-            });
+            
+            cube.rotation.x = (parsed.filteredAngles[0] - 90)* Math.PI/180 
+            cube.rotation.y = -1 * parsed.filteredAngles[1] * Math.PI/180;
 
         }
     </script>
