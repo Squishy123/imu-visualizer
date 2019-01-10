@@ -37,14 +37,14 @@
         let geometry = new THREE.BoxBufferGeometry(10, 10, 10);
 
         //texture loader
-        let loader = new THREE.CubeTextureLoader();
+        let loader = new THREE.TextureLoader();
         loader.setPath('res/');
 
-        let textureCube = loader.load(['grass-0.png', 'grass-0.png', 'grass-0.png', 'grass-0.png', 'grass-0.png', 'grass-0.png']);
+        let textureCube = loader.load('grass-0.png');
 
         let material = new THREE.MeshBasicMaterial({
             color: 0xffffff,
-            envMap: textureCube
+            map: textureCube
         });
 
         let cube = new THREE.Mesh(geometry, material);
@@ -71,7 +71,7 @@
         gauntlet.onmessage = (event) => {
             let parsed = JSON.parse(event.data);
 
-            [cube.rotation.x, cube.rotation.y, cube.rotation.z] = parsed.measuredGyro.map((angle) => {
+            [cube.rotation.x, cube.rotation.y] = parsed.measuredGyro.map((angle) => {
                 return angle * Math.PI / 180;
             });
 
